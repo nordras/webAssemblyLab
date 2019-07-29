@@ -1,5 +1,6 @@
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+
 module.exports = {
   entry: path.join(__dirname, "src", "index.js"),
   output: {
@@ -27,12 +28,28 @@ module.exports = {
       {
         test: /\.(jpg|jpeg|png|gif|mp3|svg|wasm)$/,
         loaders: ["file-loader"]
+      },
+      {
+        test: /\.wasm$/,
+        type: 'javascript/auto',
+        loaders: ['arraybuffer-loader'],
       }
+      // {
+      //   test: /fractal\.wasm$/,
+      //   loader: "file-loader",
+      //   options: {
+      //     publicPath: "dist/"
+      //   }
+      // }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html")
     })
-  ]
+  ],
+  optimization: {
+    // To keep filename consistent between different modes (for example building only)
+		occurrenceOrder: true 
+	}
 };
