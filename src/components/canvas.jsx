@@ -36,15 +36,16 @@ class Canvas extends Component {
   }
 
   fractalWasm() {
-    fetch("../bin/fractal.wasm").then(wasm => {
-      console.log(wasm)
-      const mandelIterWASM = wasm._Z10mandelIterffi;
+    var importObject = { imports: { imported_func: arg => console.log(arg) } };
+    WebAssembly.instantiateStreaming(fetch("../bin/fractal.wasm"), importObject).then(wasm => {
+      console.log(wasm.instance.exports._Z10mandelIterffi());
+      const mandelIterWASM = wasm.instance.exports._Z10mandelIterffi;
       let canvas = this.refs.canvas.getContext('2d');
-      let mag = 200;
-      let panX = 2;
-      let panY = 1.25;
-      let maxIter = 100;
-  
+      let mag = 1200;
+      let panX = 1;
+      let panY = 0.5;
+      let maxIter = 50;
+
       for (let x = 10; x < this.props.height; x++)  {
         for (let y = 10; y < this.props.width; y++)  {
           // let m = this.mandelIter(x/mag - panX, y/mag - panY, maxIter);
