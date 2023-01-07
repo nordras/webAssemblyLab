@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/nordras/webAssemblyLab#readme",
   "devDependencies": {
-    "@babel/core": "7.0.1",
+    "@babel/core": "7.20.12",
     "@babel/node": "7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
@@ -35,7 +35,7 @@
     "babel-loader": "8.0.2",
     "css-loader": "1.0.0",
     "file-loader": "^4.1.0",
-    "html-webpack-plugin": "3.2.0",
+    "html-webpack-plugin": "5.5.0",
     "node-sass": "4.9.3",
     "path": "0.12.7",
     "sass-loader": "7.1.0",
